@@ -30,7 +30,7 @@ public class BallDemo
     public void bounce(int numeroDeBolasPorPantalla)
     {
         int ground = 400;   // position of the ground line
-        Random radioAleatorio = new Random();
+        Random aleatorio = new Random();
         
         myCanvas.setVisible(true);
         // draw the ground
@@ -39,8 +39,15 @@ public class BallDemo
         for(int i = 0 ; i<numeroDeBolasPorPantalla ; i++){
             //para crear bolas en posiciones distintas modificamos el primer parametro al crear
             // la bola y que se modifique segun la i que es el contador
-            int radio = radioAleatorio.nextInt(25)+10;
-            BouncingBall ball = new BouncingBall(50+(15*i), 50, radio, Color.BLUE, ground, myCanvas);
+            int radio = aleatorio.nextInt(25)+10;
+            //color aleatorio de 0 a 255
+            int colorRed = aleatorio.nextInt(256);
+            int colorGreen = aleatorio.nextInt(256);
+            int colorBlack = aleatorio.nextInt(256);
+            int colorBlue = aleatorio.nextInt(256);
+            
+            Color color = new Color(colorRed,colorGreen,colorBlack,colorBlue);
+            BouncingBall ball = new BouncingBall(50+(15*i), 50, radio, color, ground, myCanvas);
             ball.draw();
             misBolas.add(ball);
         }
